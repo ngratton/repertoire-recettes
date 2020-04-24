@@ -1,0 +1,107 @@
+<section id="recette">
+    <div class="flex">
+        <div class="recette-image">
+            <img :src="image" :alt="titre" :title="titre">
+        </div>
+        <div class="recette-textes">
+            <div class="recette-header flex flex-column">
+                <router-link to="/">< Retour</router-link>
+                <h1>{{ titre }}</h1>
+                <div class="note-votes flex">
+                    <div class="note-etoiles">
+                        <img src="../media/img/star.png" alt="" v-for="n in etoiles">
+                        <span v-for="n in etoiles"></span>
+                    </div>
+                    <div class="votes-btn flex">
+                        <span> <strong>{{ nb_votes }}</strong>
+                            <span v-if="nb_votes > 1">personnes aiment</span>
+                            <span v-if="nb_votes == 1">personne aime</span>
+                            cette recette. 
+                        </span>
+                        <button @click="ajoutVote" id="btn-vote-aime" :disabled="!peutVoter">
+                            <span v-if="peutVoter">
+                                J'aime !
+                            </span>
+                            <span v-if="!peutVoter">
+                                Merci pour votre vote !
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="recette-details flex">
+                    <div class="details-meta flex flex-column">
+                        <div>
+                            <span>
+                                <strong>Temps total : {{ temps_total }}</strong>
+                            </span>
+                            <span>
+                                 |  <strong>{{ rendement }}</strong>
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Préparation : {{ temps_preparation }} |
+                            </span>
+                            <span>
+                                Cuisson : {{ temps_cuisson }}
+                            </span>
+                            <span v-if="temps_attente">
+                                | Attente : {{ temps_attente }}
+                            </span>
+                        </div>
+                        <div v-if="se_congele">
+                            <span>
+                                Se congèle
+                            </span>
+                        </div>
+                        <div>
+                            <a :href="lien_recette" class="lien-source">Source</a>
+                        </div>
+                    </div>
+                    <div class="details-categories flex flex-column">
+                        <span class="tags-cat" v-for="categorie in categories">
+                            {{ categorie }}
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="recette">
+                <div class="recette-ingredients flex flex-column">
+                    <h2>Ingrédients</h2>
+                    <ingredient 
+                        v-for="(ingredient, index) in ingredients"
+                        :key="index"
+                        :ingredient="ingredient"
+                    ></ingredient>
+                </div>
+                <div class="recette-preparation">
+                    <h2>Préparation</h2>
+                    <etape
+                        v-for="(etape, index) in etapes"
+                        :key="index"
+                        :txt_etape="etape"
+                        :no_etape="index"
+                     >
+                    </etape>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recette-commentaires">
+        <h2>Commentaires</h2>
+        <div class="commentaire flex" v-for="commentaire in commentaires">
+            <div class="comment-utilisateur">
+                <p>
+                    {{ commentaire.utilisateur }}
+                </p>
+            </div>
+            <div class="comment-texte">
+                <p>
+                    {{ commentaire.texte }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,37 @@
+<section id="accueil">
+    <h1>
+        Recettes
+    </h1>
+    <ul>
+        <li v-for="recette in recettes">
+            <router-link
+                :to="{ name: 'recette', params: { id: recette.id }}"
+            >
+                {{ recette.titre }}
+            </router-link>
+        </li>
+    </ul>
+    <div class="accueil-readme">
+        <h3>
+            <em>Read Me</em>
+        </h3>
+        <p>
+            Projet complet, bonus inclus.
+        </p>
+        <h4>Fonctionnalités supplémentaires</h4>
+        <p>
+            Je n'ai pas chercher à compléter l'ajout au panier d'achat, tel que suggeré dans le devis. Par contre, j'ai ajouté d'autres types de fonctionnalités, un peu comme sur l'application de recettes sur mobile <em>Paprika</em>.
+        </p>
+        <ul>
+            <li>
+                Les ingrédients peuvent être rayés par un clic, au fur et à mesure qu'ils sont incorporés.
+            </li>
+            <li>
+                Les étapes de préparation sont cliquables individuellement pour suivre la progression. Seule l'étape active est mise en surbrillance.
+            </li>
+            <li>
+                Les votes "J'aime" sont enregistrés localement pour éviter le "spam" de votes. Lorsque cliqué, le vote est comptabilisé, actualisé et le bouton est ensuite désactivé.
+            </li>
+        </ul>
+    </div>
+</section>

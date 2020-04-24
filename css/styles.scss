@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,800;1,800&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+
+/** Variables **/
+$color-bg: #EEEFF1;
+$color-secondary-bg: #F2DCD8;
+$color-text-header: hsl(220, 9%, 42%);
+$color-text-body: #232524;
+$color-main: #A0A695;
+$color-secondary: #EAF2D8;
+
+$font-header: 'Playfair Display', serif;
+$font-body: 'Inter', Arial, Helvetica, sans-serif;
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: $color-bg;
+    font-size: 10px;
+    font-family: $font-body;
+    font-feature-settings: 'salt';
+    color: $color-text-body;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $font-header;
+    font-style: italic;
+    color: $color-text-header;
+}
+
+h1 { 
+    font-size: 3.6rem;
+    margin: 2rem 0;
+}
+
+h2 { 
+    font-size: 2.2rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+h3 { 
+    font-size: 2rem; 
+}
+
+h4 { 
+    font-size: 1.8rem; 
+}
+
+h5 { 
+    font-size: 1.6rem; 
+}
+
+.conteneur {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+a {
+    color: $color-text-body;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+header {
+    background-color: $color-main;
+    height: 100px;
+
+    #main-title {
+        font-family: $font-header;
+        font-size: 3.6rem;
+        text-align: right;
+        color: white;
+    }
+}
+
+main {
+    flex: 1;
+}
+
+#accueil {
+    font-size: 1.6rem;
+
+    li {
+        margin-bottom: 1rem;
+    }
+
+    .accueil-readme {
+        margin: 6rem 0;
+        padding: 2rem;
+        background-color: $color-secondary-bg;
+    }
+}
+
+#recette {
+    font-size: 1.2rem;
+
+    .recette-image {
+        flex: 2;
+        padding: 2rem;
+        background-color: $color-secondary-bg;
+        text-align: center;
+
+        img {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 20px;
+            width: 100%;
+            max-width: 432px;
+        }
+    }
+
+    .recette-textes {
+        background-color: ghostwhite;
+        flex: 3;
+        padding: 2rem;
+
+        a {
+            color: $color-text-body;
+            text-transform: uppercase;
+            text-decoration: none;
+            align-self: flex-start;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .recette-header {
+            padding-bottom: 20px;
+
+            .note-votes {
+                margin-bottom: 2rem;
+                align-items: center;
+
+                .note-etoiles {
+                    padding-right: 2rem;
+                    margin-right: 2rem;;
+                    border-right: 1px solid $color-text-body;
+                    img {
+                        height: 20px;
+                    }
+                }
+
+                .votes-btn {
+                    align-items: center;
+                }
+            }
+            
+            .recette-details {
+                background-color: $color-secondary;
+                padding: 2rem;
+                color: $color-text-body;
+                align-items: center;
+
+                .details-meta {
+                    flex: 4;
+                    align-items: center;
+                    
+                    div {
+                        margin: .5rem 0;
+                    }
+                    
+                    .lien-source {
+                        align-self: center;
+                    }
+                }
+                
+                .details-categories {
+                    flex: 2;
+                    align-items: center;
+                    border-left: 1px solid $color-text-header;
+
+                    .tags-cat {
+                        background-color: $color-bg;
+                        padding: .5rem;
+                        border: 1px solid $color-text-header;
+                        border-radius: 6px;
+                        margin: .5rem;
+                    }
+                }
+
+            }
+    
+            #btn-vote-aime {
+                color: white;
+                background-color: $color-main;
+                font-family: $font-header;
+                border: 0;
+                border-radius: 6px;
+                margin-left: 10px;
+                transition: all .2s ease;
+                cursor: pointer;
+    
+                &:hover {
+                    background-color: $color-text-body;
+                }
+
+                &:disabled {
+                    background-color: $color-secondary-bg;
+                    color: $color-text-header;
+                    cursor: default;
+                }
+            }
+        }
+
+    }
+
+    .recette {
+        font-size: 1.4rem;
+
+        .recette-ingredients {
+            flex: 2;
+            margin-right: 20px;
+
+            span {
+                padding: .5rem;
+                margin-bottom: 2px;
+            }
+        }
+
+        .recette-preparation {
+            flex: 3;
+
+            p {
+                padding: .5rem;
+            }
+
+            .etapeactive {
+                background-color: $color-secondary-bg;
+                border-radius: 6px;
+            }
+        }
+    }
+
+    .recette-commentaires {
+        margin-top: 3rem;
+        background-color: $color-secondary;
+        padding: 2rem;
+        
+        .commentaire {
+            margin-bottom: 1rem;
+
+            .comment-utilisateur {
+                flex: 1;
+                text-align: right;
+                padding-right: 1rem;
+
+            }
+
+            .comment-texte {
+                flex: 7;
+                padding-left: 1rem;
+                border-left: 2px solid $color-text-body;
+            }
+        }
+    }
+}
+
+#err404 {
+
+    p {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+
+    img {
+        margin: 2rem 0;
+        width: 100%;
+        height: auto;
+    }
+}
+
+footer {
+    height: 60px;
+    background-color: $color-text-body;
+    color: $color-secondary;
+
+    & > div {
+        display: grid;
+        place-items: center;
+    }
+}
+
+/** UTILS **/
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.grid-center {
+    display: grid;
+    place-items: center;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+    text-decoration-color: $color-text-body;
+    color: $color-text-header;
+    background-color: $color-secondary;
+    border-radius: 6px;
+}
