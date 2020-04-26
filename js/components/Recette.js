@@ -6,7 +6,6 @@ export default Vue.component('recette', template({
     template: 'components/recette.html',
     data() {
         return {
-            objRecette: {},
             id_recette: null,
             image: '',
             titre: '',
@@ -40,7 +39,6 @@ export default Vue.component('recette', template({
                 resp.json().then(data => {
                     data.recettes.forEach(recette => {
                         if ( recette.id == id_recette ) {
-                            this.objRecette = recette
                             this.image = recette.image
                             this.titre = recette.titre
                             this.etapes = recette.preparation
